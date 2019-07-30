@@ -24,19 +24,19 @@ service/nginx-headless-svc created
 # Waiting for Pods
 pod/nginx-01 condition met
 pod/nginx-02 condition met
-Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                                         [32m[OK][m
-Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local                   [31m[FAIL][m
-Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local                  [31m[FAIL][m
+Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                              [OK]
+Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local        [FAIL]
+Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local       [FAIL]
 # Creating ServiceEntry
 serviceentry.networking.istio.io/nginx created
-Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                                         [32m[OK][m
-Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local                   [32m[OK][m
-Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local                  [31m[FAIL][m
+Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                              [OK]
+Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local        [OK]
+Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local       [FAIL]
 # Creting Policy
 policy.authentication.istio.io/nginx-permissive created
-Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                                         [32m[OK][m
-Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local                   [32m[OK][m
-Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local                  [32m[OK][m
+Checking connectivity to svc - nginx-svc.istio-test.svc.cluster.local                              [OK]
+Checking connectivity pod-to-pod - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local        [OK]
+Checking connectivity pod-to-self - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local       [OK]
 # Cleaning up
 namespace "istio-test" deleted
 ```
