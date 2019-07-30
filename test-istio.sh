@@ -7,42 +7,40 @@ TEST_SVC_DNS="${TEST_SVC}.${TEST_NS}.svc.cluster.local"
 TEST_SVC_HEADLESS_DNS="${TEST_SVC_HEADLESS}.${TEST_NS}.svc.cluster.local"
 POD_01="nginx-01"
 POD_02="nginx-02"
-TEST_TEXT="May the Force be with you"
 
 [ "${DEBUG:=false}" = 'true' ] && set -x
 
 # Check if we have colors available, it looks good
 COLORS=$(tput colors)
 if [[ -n $COLORS && $COLORS -ge 8 ]]; then
-        GREEN=$(tput setaf 2)
-        RED=$(tput setaf 1)
-        NOCOL=$(tput sgr0)
-        BOLD=$(tput bold)
+  GREEN=$(tput setaf 2)
+  RED=$(tput setaf 1)
+  NOCOL=$(tput sgr0)
 fi
 
 test_cmd() {
-	printf '%*s' "-110" "$1"
+  printf '%*s' "-110" "$1"
   shift
   "$@" \
     && echo_ok \
     || echo_fail
-}
+  }
 
 echo_ok() {
-	printf '%*s\n' "-10" "${GREEN}[OK]${NOCOL}"
-	return $?
+  printf '%*s\n' "-10" "${GREEN}[OK]${NOCOL}"
+  return $?
 }
 
 echo_fail() {
-	printf '%*s\n' "-10" "${RED}[FAIL]${NOCOL}"
-	return $?
+  printf '%*s\n' "-10" "${RED}[FAIL]${NOCOL}"
+  return $?
 }
 
 test_curl() {
   test_cmd "Checking connectivity ${1} - ${2}" \
     kubectl exec -it "${POD_01}" -n "${TEST_NS}" -c nginx -- \
-      /bin/sh -c "curl -s -o /dev/null -w '%{http_code}' --max-time 2 'http://${2}' | grep -q '200'" 2>/dev/null
-}
+    /bin/sh -c "curl -s -o /dev/null -w '%{http_code}' --max-time 2 'http://${2}' | grep -q '200'" 2>/dev/null
+  }
 
 test() {
   test_curl "to svc" "${TEST_SVC_DNS}"
