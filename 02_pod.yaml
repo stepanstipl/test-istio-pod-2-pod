@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-01
+  namespace: istio-test
+  labels:
+    app: nginx
+spec:
+  hostname: nginx-01
+  subdomain: nginx-headless-svc
+  containers:
+  - name: nginx
+    image: quay.io/stepanstipl/test:alpine-nginx-curl.v2
+    ports:
+    - containerPort: 80
+      name: http-main
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-02
+  namespace: istio-test
+  labels:
+    app: nginx
+spec:
+  hostname: nginx-02
+  subdomain: nginx-headless-svc
+  containers:
+  - name: nginx
+    image: quay.io/stepanstipl/test:alpine-nginx-curl.v2
+    ports:
+    - containerPort: 80
+      name: http-main

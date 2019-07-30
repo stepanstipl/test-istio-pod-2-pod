@@ -1,0 +1,14 @@
+kind: ServiceEntry
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: nginx
+  namespace: istio-test
+spec:
+  hosts:
+    - nginx-01.nginx-headless-svc.istio-test.svc.cluster.local
+    - nginx-02.nginx-headless-svc.istio-test.svc.cluster.local
+  ports:
+  - number: 80
+    name: http-main
+    protocol: http
+  location: MESH_INTERNAL
